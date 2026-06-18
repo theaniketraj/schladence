@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="A comprehensive, offline-first, high-performance web application designed to be the ultimate personal academic management system for college students."
+    />
+    <meta
+      name="keywords"
+      content="study planner, academic tracker, student dashboard, timetable, pomodoro timer, homework tracker, offline planner"
+    />
+    <meta name="author" content="Study Planner" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://studyplanner.example.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://studyplanner.example.com/" />
+    <meta
+      property="og:title"
+      content="Study Planner | Local-First Academic Management"
+    />
+    <meta
+      property="og:description"
+      content="The ultimate personal academic management system for college students. Track attendance, timetable, homework, and study offline."
+    />
+    <meta
+      property="og:image"
+      content="https://studyplanner.example.com/og-image.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://studyplanner.example.com/" />
+    <meta
+      property="twitter:title"
+      content="Study Planner | Local-First Academic Management"
+    />
+    <meta
+      property="twitter:description"
+      content="The ultimate personal academic management system for college students. Track attendance, timetable, homework, and study offline."
+    />
+    <meta
+      property="twitter:image"
+      content="https://studyplanner.example.com/og-image.jpg"
+    />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="apple-touch-icon"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/graduation-cap.svg"
+    />
+
+    <title>Study Planner | Local-First Academic Management</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Module Styles -->
+    <link rel="stylesheet" href="css-modules/dashboard.css" />
+    <link rel="stylesheet" href="css-modules/timetable.css" />
+    <link rel="stylesheet" href="css-modules/subjects.css" />
+    <link rel="stylesheet" href="css-modules/homework.css" />
+    <link rel="stylesheet" href="css-modules/attendance.css" />
+    <link rel="stylesheet" href="css-modules/topics.css" />
+    <link rel="stylesheet" href="css-modules/study.css" />
+    <link rel="stylesheet" href="css-modules/analytics.css" />
+    <link rel="stylesheet" href="css-modules/calendar.css" />
+    <link rel="stylesheet" href="css-modules/notes.css" />
+    <link rel="stylesheet" href="css-modules/exams.css" />
+    <link rel="stylesheet" href="css-modules/onboarding.css" />
+    <link rel="stylesheet" href="css-modules/modal.css" />
+  </head>
+  <body>
+    <!-- Onboarding Overlay -->
+    <div class="onboarding-overlay" id="onboarding-overlay">
+      <div class="onboarding-card">
+        <div class="onboarding-header">
+          <div class="onboarding-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h2>Welcome to Study Planner</h2>
+          <p>
+            Let's personalize your workspace. Your data remains strictly local
+            and offline.
+          </p>
+        </div>
+
+        <form
+          id="onboarding-form"
+          style="display: flex; flex-direction: column; gap: 1.25rem"
+        >
+          <div class="form-group">
+            <label>Full Name</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-regular fa-user"></i>
+              <input
+                type="text"
+                id="ob-name"
+                required
+                placeholder="E.g. John Doe"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>College / University</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-building-columns"></i>
+              <input
+                type="text"
+                id="ob-college"
+                required
+                placeholder="E.g. State University"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Branch / Major</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-book-open"></i>
+              <input
+                type="text"
+                id="ob-branch"
+                required
+                placeholder="E.g. Computer Science"
+              />
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem">
+            <div class="form-group" style="flex: 1">
+              <label>Current Year</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-calendar-day"></i>
+                <input
+                  type="number"
+                  id="ob-year"
+                  required
+                  placeholder="2"
+                  min="1"
+                  max="10"
+                />
+              </div>
+            </div>
+            <div class="form-group" style="flex: 1">
+              <label>Graduation Year</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <input
+                  type="number"
+                  id="ob-grad-year"
+                  required
+                  placeholder="2028"
+                />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn-onboarding">
+            Get Started <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i
+          class="fa-solid fa-graduation-cap"
+          style="color: var(--accent-primary); margin-right: 10px"
+        ></i>
+        StudyPlanner
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" data-target="dashboard"
+          ><i class="fa-solid fa-house"></i> Dashboard</a
+        >
+        <a class="nav-item" data-target="timetable"
+          ><i class="fa-solid fa-calendar-days"></i> Timetable</a
+        >
+        <a class="nav-item" data-target="subjects"
+          ><i class="fa-solid fa-book"></i> Subjects</a
+        >
+        <a class="nav-item" data-target="homework"
+          ><i class="fa-solid fa-list-check"></i> Homework</a
+        >
+        <a class="nav-item" data-target="topics"
+          ><i class="fa-solid fa-layer-group"></i> Topics</a
+        >
+        <a class="nav-item" data-target="attendance"
+          ><i class="fa-solid fa-user-check"></i> Attendance</a
+        >
+        <a class="nav-item" data-target="study"
+          ><i class="fa-solid fa-stopwatch"></i> Study</a
+        >
+        <a class="nav-item" data-target="calendar"
+          ><i class="fa-regular fa-calendar-check"></i> Calendar</a
+        >
+        <a class="nav-item" data-target="notes"
+          ><i class="fa-solid fa-file-lines"></i> Notes</a
+        >
+        <a class="nav-item" data-target="exams"
+          ><i class="fa-solid fa-award"></i> Exams</a
+        >
+        <a class="nav-item" data-target="analytics"
+          ><i class="fa-solid fa-chart-pie"></i> Analytics</a
+        >
+        <a class="nav-item" data-target="settings"
+          ><i class="fa-solid fa-gear"></i> Settings</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div
+          class="header-left"
+          style="display: flex; align-items: center; gap: 1rem"
+        >
+          <button class="icon-btn" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="
+                position: absolute;
+                margin: 10px 15px;
+                color: var(--text-secondary);
+              "
+            ></i>
+            <input
+              type="text"
+              placeholder="Search topics, homework, subjects..."
+              style="padding-left: 40px"
+            />
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="notifications-btn" title="Notifications">
+            <i class="fa-regular fa-bell"></i>
+          </button>
+          
+          <!-- Gamification Elements -->
+          <div id="streak-display" class="streak-display" title="Daily Streak" style="display: none; align-items: center; gap: 0.5rem; font-weight: 600; color: #f59e0b; font-size: 1rem; padding: 0 10px;">
+            <i class="fa-solid fa-fire"></i> <span id="streak-count">0</span>
+          </div>
+          <div id="xp-display" class="xp-display" title="Current Level and XP" style="display: flex; align-items: center; font-weight: 500; font-size: 0.9rem; color: var(--text-secondary); background: var(--bg-hover); padding: 4px 10px; border-radius: 12px; margin-right: 10px;">
+            Lvl 1 (0 XP)
+          </div>
+
+          <div
+            class="user-profile-header"
+            id="header-user-profile"
+            title="Profile"
+          >
+            <div
+              class="user-avatar"
+              style="
+                background: transparent;
+                color: var(--text-primary);
+                font-size: 1.25rem;
+              "
+            >
+              <i class="fa-solid fa-circle-user"></i>
+            </div>
+          </div>
+          <button class="icon-btn" id="theme-toggle" title="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- View Container -->
+      <div class="view-container">
+        <!-- Dashboard View -->
+        <section id="dashboard" class="view-section active">
+          <h1 class="page-title">Dashboard</h1>
+          <div id="dashboard-content"></div>
+        </section>
+
+        <!-- Timetable View -->
+        <section id="timetable" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">
+              Weekly Timetable
+            </h1>
+            <button class="btn btn-primary" id="add-period-btn">
+              <i class="fa-solid fa-plus"></i> Add Period
+            </button>
+          </div>
+          <div id="timetable-content"></div>
+        </section>
+
+        <!-- Subjects View -->
+        <section id="subjects" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">Subjects</h1>
+            <button class="btn btn-primary" id="add-subject-btn">
+              <i class="fa-solid fa-plus"></i> Add Subject
+            </button>
+          </div>
+          <div id="subjects-content"></div>
+        </section>
+
+        <!-- Homework View -->
+        <section id="homework" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">
+              Homework & Assignments
+            </h1>
+            <button class="btn btn-primary" id="add-hw-btn">
+              <i class="fa-solid fa-plus"></i> Add Task
+            </button>
+          </div>
+          <div id="homework-content"></div>
+        </section>
+
+        <!-- Topics View -->
+        <section id="topics" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">Topics Covered</h1>
+            <button class="btn btn-primary" id="add-topic-btn">
+              <i class="fa-solid fa-plus"></i> Log Topic
+            </button>
+          </div>
+          <div id="topics-content"></div>
+        </section>
+
+        <!-- Attendance View -->
+        <section id="attendance" class="view-section">
+          <h1 class="page-title">Attendance Tracker</h1>
+          <div id="attendance-content"></div>
+        </section>
+
+        <!-- Study View -->
+        <section id="study" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">Study Sessions</h1>
+            <button class="btn btn-primary" id="add-study-btn">
+              <i class="fa-solid fa-plus"></i> Plan Session
+            </button>
+          </div>
+          <div id="study-content"></div>
+        </section>
+
+        <!-- Calendar View -->
+        <section id="calendar" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">Calendar System</h1>
+            <button class="btn btn-primary" id="add-calendar-event-btn">
+              <i class="fa-solid fa-plus"></i> Add Event
+            </button>
+          </div>
+          <div id="calendar-content"></div>
+        </section>
+
+        <!-- Notes View -->
+        <section id="notes" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">Notes</h1>
+            <button class="btn btn-primary" id="add-note-btn">
+              <i class="fa-solid fa-plus"></i> New Note
+            </button>
+          </div>
+          <div class="header-search" style="margin-bottom: 1.5rem; width: 100%">
+            <i
+              class="fa-solid fa-search"
+              style="
+                position: absolute;
+                margin: 10px 15px;
+                color: var(--text-secondary);
+              "
+            ></i>
+            <input
+              type="text"
+              id="notes-search"
+              placeholder="Search notes..."
+              style="padding-left: 40px; width: 100%"
+            />
+          </div>
+          <div id="notes-content"></div>
+        </section>
+
+        <!-- Exams View -->
+        <section id="exams" class="view-section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h1 class="page-title" style="margin-bottom: 0">Exam Tracker</h1>
+            <button class="btn btn-primary" id="add-exam-btn">
+              <i class="fa-solid fa-plus"></i> Add Exam
+            </button>
+          </div>
+          <div id="exams-content"></div>
+        </section>
+
+        <!-- Analytics View -->
+        <section id="analytics" class="view-section">
+          <h1 class="page-title">Analytics & Insights</h1>
+          <div id="analytics-content"></div>
+        </section>
+
+        <!-- Settings View -->
+        <section id="settings" class="view-section">
+          <h1 class="page-title">Settings</h1>
+          <div
+            id="settings-content"
+            style="display: flex; flex-direction: column; gap: 1.5rem"
+          >
+            <!-- User Profile Section -->
+            <div class="card" id="settings-profile-card">
+              <h3>User Profile</h3>
+              <p
+                style="
+                  margin: 0.5rem 0 1.5rem 0;
+                  color: var(--text-secondary);
+                  font-size: 0.875rem;
+                "
+              >
+                Your academic details. Stored locally.
+              </p>
+              <div class="profile-details-grid" id="profile-details-container">
+                <!-- Injected via JS -->
+              </div>
+              <button
+                class="btn btn-primary"
+                id="edit-profile-btn"
+                style="margin-top: 1rem"
+              >
+                <i class="fa-solid fa-pen"></i> Edit Profile
+              </button>
+            </div>
+
+            <!-- Timetable Configuration -->
+            <div class="card" id="settings-timetable-card">
+              <h3>Timetable Configuration</h3>
+              <p
+                style="
+                  margin: 0.5rem 0 1.5rem 0;
+                  color: var(--text-secondary);
+                  font-size: 0.875rem;
+                "
+              >
+                Customize your weekly schedule layout to match your university
+                or school structure.
+              </p>
+              <form
+                id="timetable-config-form"
+                style="
+                  display: flex;
+                  gap: 1rem;
+                  align-items: flex-end;
+                  flex-wrap: wrap;
+                "
+              >
+                <div class="form-group" style="flex: 1; min-width: 200px">
+                  <label
+                    for="config-days"
+                    style="
+                      font-size: 0.875rem;
+                      font-weight: 600;
+                      color: var(--text-secondary);
+                      margin-bottom: 0.25rem;
+                      display: block;
+                    "
+                    >Working Days</label
+                  >
+                  <select
+                    id="config-days"
+                    style="
+                      width: 100%;
+                      padding: 0.75rem 1rem;
+                      border: 1px solid var(--border-color);
+                      border-radius: var(--radius-md);
+                      background: var(--bg-primary);
+                      color: var(--text-primary);
+                      outline: none;
+                    "
+                  >
+                    <option value="5">Monday to Friday (5 Days)</option>
+                    <option value="6">Monday to Saturday (6 Days)</option>
+                    <option value="7">Full Week (7 Days)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 200px">
+                  <label
+                    for="config-periods"
+                    style="
+                      font-size: 0.875rem;
+                      font-weight: 600;
+                      color: var(--text-secondary);
+                      margin-bottom: 0.25rem;
+                      display: block;
+                    "
+                    >Periods per Day</label
+                  >
+                  <input
+                    type="number"
+                    id="config-periods"
+                    min="3"
+                    max="12"
+                    value="7"
+                    style="
+                      width: 100%;
+                      padding: 0.75rem 1rem;
+                      border: 1px solid var(--border-color);
+                      border-radius: var(--radius-md);
+                      background: var(--bg-primary);
+                      color: var(--text-primary);
+                      outline: none;
+                    "
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="padding: 0.75rem 1.5rem"
+                >
+                  Save Config
+                </button>
+              </form>
+            </div>
+
+            <!-- Notification Preferences -->
+            <div class="card" id="settings-notifications-card">
+              <h3>Notification Preferences</h3>
+              <p
+                style="
+                  margin: 0.5rem 0 1.5rem 0;
+                  color: var(--text-secondary);
+                  font-size: 0.875rem;
+                "
+              >
+                Customize what alerts you want to receive.
+              </p>
+              <form
+                id="notification-prefs-form"
+                style="display: flex; flex-direction: column; gap: 1rem"
+              >
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    cursor: pointer;
+                  "
+                >
+                  <input type="checkbox" id="notif-homework" checked /> Show
+                  Homework Alerts
+                </label>
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    cursor: pointer;
+                  "
+                >
+                  <input type="checkbox" id="notif-exams" checked /> Show Exam
+                  Alerts
+                </label>
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    cursor: pointer;
+                  "
+                >
+                  <input type="checkbox" id="notif-revision" checked /> Show
+                  Revision Reminders
+                </label>
+              </form>
+            </div>
+
+            <!-- Data Management -->
+            <div class="card">
+              <h3>Data Management</h3>
+              <p style="margin: 1rem 0; color: var(--text-secondary)">
+                Manage your local data. Export to JSON, import from JSON, or clear all data.
+              </p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="export-data-btn">
+                  <i class="fa-solid fa-download"></i> Export Data
+                </button>
+                <input type="file" id="import-data-input" accept=".json" style="display: none;" />
+                <button class="btn btn-primary" id="import-data-btn" style="background-color: var(--warning); color: white;">
+                  <i class="fa-solid fa-upload"></i> Import Data
+                </button>
+                <button
+                  class="btn"
+                  style="background-color: var(--danger); color: white"
+                  id="clear-data-btn"
+                >
+                  <i class="fa-solid fa-trash"></i> Clear All Data
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Main Logic -->
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "Local-First Academic Study Planner",
+  "short_name": "StudyPlanner",
+  "author": "Aniket Raj",
+  "authorUrl": "https://github.com/theaniketraj",
+  "description": "A comprehensive, offline-first, high-performance web application designed to be the ultimate personal academic management system for college students.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/graduation-cap.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/graduation-cap.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "subjects": [
+    { "id": "sub_1", "name": "Data Structures", "code": "CS201", "teacher": "Dr. Smith", "credits": 4, "color": "#3b82f6", "semester": "3" },
+    { "id": "sub_2", "name": "Algorithms", "code": "CS202", "teacher": "Prof. Alan", "credits": 4, "color": "#ef4444", "semester": "3" },
+    { "id": "sub_3", "name": "Database Systems", "code": "CS203", "teacher": "Dr. Codd", "credits": 3, "color": "#10b981", "semester": "3" }
+  ],
+  "homework": [
+    { "id": "hw_1", "title": "B-Tree Implementation", "subjectId": "sub_1", "dueDate": "2026-05-15", "priority": "High", "status": "Pending" },
+    { "id": "hw_2", "title": "SQL Queries Assignment", "subjectId": "sub_3", "dueDate": "2026-05-20", "priority": "Medium", "status": "In Progress" }
+  ]
+}

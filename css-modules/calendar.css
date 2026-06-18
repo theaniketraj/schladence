@@ -1,0 +1,206 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  /* Fallback height, but view-section active is flex */
+  height: calc(100vh - var(--header-height) - 3.5rem - 2.7rem);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.calendar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto repeat(6, 1fr); /* 1 header row, 6 week rows */
+  gap: 1px;
+  background-color: var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-grow: 1; /* Takes remaining height */
+}
+
+.calendar-day-header {
+  background-color: var(--bg-secondary);
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-cell {
+  background-color: var(--bg-primary);
+  min-height: 0; /* Important for flex/grid to allow shrinking */
+  padding: 0.35rem;
+  position: relative;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  overflow-y: auto;
+}
+
+.calendar-cell::-webkit-scrollbar {
+  width: 4px;
+}
+.calendar-cell::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.calendar-cell:hover {
+  background-color: var(--bg-secondary);
+}
+
+.calendar-cell.today {
+  background-color: rgb(59 130 246 / 0.05);
+}
+
+.calendar-cell.today .date-num {
+  background-color: var(--accent-primary);
+  color: white;
+}
+
+.calendar-cell.other-month {
+  opacity: 0.5;
+  background-color: var(--bg-secondary);
+}
+
+.date-num {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  align-self: flex-end;
+  flex-shrink: 0;
+}
+
+.cal-event {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  color: white;
+  flex-shrink: 0;
+}
+
+.cal-event.type-homework {
+  background-color: var(--danger);
+}
+.cal-event.type-study {
+  background-color: var(--success);
+}
+.cal-event.type-event {
+  background-color: var(--warning);
+  color: var(--text-primary);
+}
+.cal-event.type-class {
+  background-color: var(--accent-primary);
+  opacity: 0.8;
+}
+
+/* Mobile Specific Agenda View */
+@media (max-width: 768px) {
+  .calendar-container {
+    height: auto; /* Allow natural scrolling on mobile */
+  }
+  .calendar-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background-color: transparent;
+    border: none;
+    overflow: visible;
+  }
+  .calendar-day-header {
+    display: none;
+  }
+  .calendar-cell {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    min-height: auto;
+    overflow: visible;
+    gap: 0.5rem;
+  }
+  .calendar-cell.other-month {
+    display: none;
+  }
+  .calendar-cell.no-events:not(.today) {
+    display: none; /* Hide empty days for a cleaner agenda */
+  }
+
+  .date-num {
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 0.25rem;
+    align-self: flex-start;
+  }
+
+  /* Prefix the date number with the day of the week logic in JS if possible, or just style differently */
+  .calendar-cell::before {
+    content: attr(data-weekday);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: -0.25rem;
+  }
+
+  .calendar-cell.today {
+    border-color: var(--accent-primary);
+    background-color: rgb(59 130 246 / 0.05);
+  }
+  .calendar-cell.today::after {
+    content: "TODAY";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    background: rgb(59 130 246 / 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .cal-event {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    white-space: normal;
+    border-radius: var(--radius-sm);
+  }
+}

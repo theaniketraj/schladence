@@ -1,0 +1,28 @@
+# Local-First Academic Study Planner
+
+> A comprehensive, offline-first, high-performance web application designed to be the ultimate personal academic management system for college students.
+
+## Architecture
+- **Tech Stack**: Pure HTML5, CSS3, Vanilla JavaScript. Zero external dependencies/frameworks (no React, Vue, etc.).
+- **Storage**: IndexedDB via a custom wrapper (`StorageAPI`). 100% local-first. No backend servers or cloud databases.
+- **Routing**: Hash-based routing (`modules/navigation.js`) for SPA persistence.
+- **PWA Ready**: Includes a `sw.js` service worker and `manifest.json` for offline capability and installability.
+
+## Core Modules
+- `dashboard.js`: Analytics, immediate upcoming deadlines, attendance summary.
+- `subjects.js`: CRUD for academic subjects with assigned hex colors.
+- `timetable.js`: Weekly class schedule visualization with configurable days/periods.
+- `homework.js`: Kanban board for assignments (Pending, In Progress, Completed, Missed).
+- `attendance.js`: Tracking class attendance vs required limits (e.g. 75%).
+- `topics.js`: Syllabus tracking with mastery levels.
+- `study.js`: Integrated Pomodoro timer.
+- `calendar.js`: Full aggregated monthly calendar view of exams, homework, and study sessions.
+- `exams.js`: Exam syllabus planner and countdown tracker.
+- `notes.js`: Markdown-supported fast sticky notes linked to subjects.
+- `notifications.js`: Real-time notification aggregation in the header.
+
+## Theme & UI
+- **Design System**: Glassmorphism, CSS Variables based, Mobile-first flexbox/grid.
+- **Modals**: Native `window.prompt/alert` are replaced by custom `showModal`, `showConfirm`, and `showAlert` from `modules/modal.js`.
+
+For more details, review `index.html` and the `modules/` directory.

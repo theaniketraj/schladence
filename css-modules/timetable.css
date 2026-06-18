@@ -1,0 +1,97 @@
+.timetable-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(5, 1fr);
+  gap: 1px;
+  background-color: var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.tt-header {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tt-time-col {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.tt-cell {
+  background-color: var(--bg-primary);
+  min-height: 100px;
+  padding: 0.5rem;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.tt-cell.drag-over {
+  background-color: var(--border-color);
+}
+
+.tt-period {
+  background-color: var(--bg-secondary);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+}
+
+.tt-period:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.tt-period:active {
+  cursor: grabbing;
+}
+
+.tt-period.dragging {
+  opacity: 0.5;
+}
+
+.tt-subject {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.tt-room {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+}
+
+@media (max-width: 1024px) {
+  .timetable-grid {
+    display: block;
+    background-color: transparent;
+    border: none;
+  }
+  .tt-header,
+  .tt-time-col {
+    display: none;
+  }
+  .tt-cell {
+    margin-bottom: 1rem;
+    background-color: transparent;
+    min-height: auto;
+    padding: 0;
+  }
+  .tt-cell:empty {
+    display: none;
+  }
+}
